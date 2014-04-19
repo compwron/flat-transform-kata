@@ -1,4 +1,4 @@
-This is some code from a pairing session on a model transform kata (that I made up). 
+This is a sample of the frequently-repeating pattern which I call a "flat transform kata" i.e. making a flat data structure into a hierarchical data structure.
 
 First round rules:
 Given this data (either in csv file or database, whatever) transform the flat model to the hierarchical model. 
