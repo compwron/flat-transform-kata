@@ -1,28 +1,18 @@
 This is a sample of the frequently-repeating pattern which I call a "flat transform kata" i.e. making a flat data structure into a hierarchical data structure.
 
-First round rules:
-Given this data (either in csv file or database, whatever) transform the flat model to the hierarchical model. 
+If you want to do this kata:
 
-```
-Starter data:
-fooId1, fooDescription1, barId1, barDescription1
-fooId1, fooDescription1, barId2, barDescription2
-fooId2, fooDescription2, barId3, barDescription3
+Starting data structure:
+betaID, betaName, gammaId, gammaName
+1 a 100 aa
+2 b 200 bb
+2 c 300 cc
 
-End data:
-- foo1
--- bar1
--- bar2
-- foo2
--- bar3
+Expansion 1:
+Exclude data with "OTHER" or "XXX" in any description
 
-Second round (advanced) rules:
-Validate/cleanse data on import such that
-- There can be no duplicated "bar" (i.e. foo1 and foo2 cannot both have a bar1, and foo1 cannot have two bar2)
-- Some data is invalid:
--- i.e. "foo3" is invalid and no flat model with foo3 can be persisted to the end model
--- any bar with description field "stuff" is invalid and cannot be persisted (but this does not invalidate the foo unless the invalid bar is the only bar in foo)
-```
+Expansion 2:
+There can be no duplicate gammas (so alpha1 and alpha2 cannot have the same beta, and two betas cannot have the same gamma)
 
 I assume that when solving in Java, the most sane way to solve this involves guava transforms. 
 
