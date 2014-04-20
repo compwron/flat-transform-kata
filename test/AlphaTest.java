@@ -13,14 +13,14 @@ public class AlphaTest {
     @Test
     public void shouldTranslateFromFlatAlpha() {
 
-        FlatAlpha FlatAlpha = new FlatAlphaBuilder()
+        FlatAlpha flatAlpha = new FlatAlphaBuilder()
                 .withBetaId("1")
                 .withBetaName("Beta name")
                 .withGammaId("100")
                 .withGammaDescription("gamma 1 description")
                 .build();
 
-        Alpha alpha = new Alpha(newArrayList(FlatAlpha));
+        Alpha alpha = new Alpha(newArrayList(flatAlpha));
 
         Beta beta = new BetaBuilder()
                 .withBetaId("1")
@@ -164,9 +164,9 @@ public class AlphaTest {
         FlatAlpha beta3WithGamma300 = new FlatAlphaBuilder().withBetaId("3").withBetaName("Beta 1")
                 .withGammaId("300").withGammaDescription("Gamma 300").build();
 
-        Alpha Alpha = new Alpha(newArrayList(beta2WithGamma200, beta1WithGamma100, beta3WithGamma300));
+        Alpha alpha = new Alpha(newArrayList(beta2WithGamma200, beta1WithGamma100, beta3WithGamma300));
 
-        List<Beta> Betas = Alpha.getBetas();
+        List<Beta> Betas = alpha.getBetas();
 
         assertThat(Betas.get(0).getBetaId(), is("1"));
         assertThat(Betas.get(1).getBetaId(), is("2"));
@@ -175,21 +175,21 @@ public class AlphaTest {
 
     @Test
     public void shouldGetGammaById(){
-        FlatAlpha FlatAlpha1 = new FlatAlphaBuilder().withBetaId("1").withBetaName("Beta 1")
+        FlatAlpha flatAlpha1 = new FlatAlphaBuilder().withBetaId("1").withBetaName("Beta 1")
                 .withGammaId("200").withGammaDescription("Gamma 200").build();
-        FlatAlpha FlatAlpha2 = new FlatAlphaBuilder().withBetaId("1").withBetaName("Beta 1")
+        FlatAlpha flatAlpha2 = new FlatAlphaBuilder().withBetaId("1").withBetaName("Beta 1")
                 .withGammaId("100").withGammaDescription("Gamma 100").build();
 
-        Alpha Alpha = new Alpha(newArrayList(FlatAlpha1, FlatAlpha2));
+        Alpha alpha = new Alpha(newArrayList(flatAlpha1, flatAlpha2));
 
-        assertThat(Alpha.getGammaById("100").getDescription(), is("Gamma 100"));
+        assertThat(alpha.getGammaById("100").getDescription(), is("Gamma 100"));
     }
 
     @Test
     public void shouldReturnNullGammaWhenNoGammaWithIdIsPresent(){
-        Alpha Alpha = new Alpha(new ArrayList<FlatAlpha>());
+        Alpha alpha = new Alpha(new ArrayList<FlatAlpha>());
 
-        assertThat(Alpha.getGammaById("100"), nullValue());
+        assertThat(alpha.getGammaById("100"), nullValue());
     }
 
 }
